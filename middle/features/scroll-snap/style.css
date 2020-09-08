@@ -1,0 +1,20 @@
+.container {
+  width: 320px;
+  height: 320px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.element {
+  width: 300px;
+  height: 300px;
+  color: #fff;
+  font-size: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  margin-bottom: 10px;
+}
