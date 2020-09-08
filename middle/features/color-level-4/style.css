@@ -4,8 +4,10 @@
 }
 
 .oldschool {
+  background: rgba(00, 00, 00, .5);
 }
 
 .newschool {
+  background: #000c;
 }
 

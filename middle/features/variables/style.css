@@ -1,0 +1,18 @@
+:root {
+  --colorGreen: green;
+}
+
+.block {
+  /* --colorGreen: red; */
+  color: var(--colorGreen);
+}
+
+.block:hover {
+  --colorGreen: blue;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --colorGreen: pink;
+  }
+}

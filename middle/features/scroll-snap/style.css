@@ -5,9 +5,13 @@
   margin-left: auto;
   padding: 10px;
   border: 2px solid black;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
 }
 
 .element {
+  scroll-snap-align: start;
+  scroll-margin: 10px;
   width: 300px;
   height: 300px;
   color: #fff;
