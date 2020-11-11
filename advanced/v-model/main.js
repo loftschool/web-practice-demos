@@ -1,54 +1,18 @@
 const inputComp = {
-  template: "#input-comp",
-  props: ['value'],
-  model: {
-    prop: "value",
-    event: "input"
-  }
+  template: "#input-comp"
 };
 
 const checkbox = {
-  template: "#checkbox",
-  props: ['value'],
-  model: {
-    prop: "value",
-    event: "change"
-  }
+  template: "#checkbox"
 };
 
 const group = {
-  template: "#group",
-  props: ["items"],
-  data() {
-    return {
-      inner: this.items
-    }
-  },
-  model: {
-    prop: "items",
-    event: "itemsChanged"
-  },
-  methods: {
-    expose() {
-      this.$emit('itemsChanged', this.inner);
-    }
-  }
+  template: "#group"
 }
 
 const radio = {
   template: "#radio",
-  props: ['value'],
-  model: {
-    event: "change",
-    prop: "value"
-  },
-  methods: {
-    handleChange(event) {
-      this.$emit("change", event.target.value);
-    }
-  }
 }
-
 
 const app = new Vue({
   el: "#root",
@@ -58,7 +22,7 @@ const app = new Vue({
     return {
       myText: "test",
       yesNo: true,
-      group: ['red', 'blue'],
+      group: [],
       radio: "visa"
     }
   }
