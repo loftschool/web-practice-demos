@@ -14,7 +14,7 @@
   <script type="text/x-template" id="root-template">
     <div class="wrapper">
       <pre>{{myText}}</pre>
-      <input-comp v-model="myText" />
+      <input-comp v-model="myText"/>
       <hr>
 
       <pre>{{yesNo}}</pre>
@@ -33,13 +33,13 @@
 
   <script type="text/x-template" id="input-comp">
     <div class="wrapper">
-      <input type="text">
+      <input type="text" :value="value" @input="$emit('input', $event.target.value)">
     </div>
   </script>
 
   <script type="text/x-template" id="checkbox">
     <div class="wrapper">
-      <input type="checkbox">
+      <input type="checkbox" :checked="value" @change="$emit('change', $event.target.checked)">
     </div>
   </script>
 
@@ -48,19 +48,19 @@
       <div>
         <label>
           <span>red</span>
-          <input value="red" type="checkbox">
+          <input value="red" @change="expose" v-model="inner" type="checkbox">
         </label>
       </div>
       <div>
         <label>
           <span>green</span>
-          <input value="green" type="checkbox">
+          <input value="green" @change="expose" v-model="inner" type="checkbox">
         </label>
       </div>
       <div>
         <label>
           <span>blue</span>
-          <input value="blue" type="checkbox">
+          <input value="blue" @change="expose" v-model="inner" type="checkbox">
         </label>
       </div>
     </div>
@@ -71,13 +71,17 @@
       <div>
         <label>
           <span>visa</span>
-          <input value="visa" name="payment" type="radio">
+          <input 
+          :checked="value === 'visa'" 
+          value="visa" @change="handleChange" name="payment" type="radio">
         </label>
       </div>
       <div>
         <label>
           <span>master card</span>
-          <input value="master" name="payment" type="radio">
+          <input 
+          :checked="value === 'master'" 
+          value="master" @change="handleChange" name="payment" type="radio">
         </label>
       </div>
   </script>
