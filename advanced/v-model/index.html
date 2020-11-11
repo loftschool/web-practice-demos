@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VUE | DEMO</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/x-template" id="root-template">
+    <div class="wrapper">
+      <h1>Hello World</h1>
+
+      <pre>{{myText}}</pre>
+      <input-comp v-model="myText" />
+      <hr>
+
+      <pre>{{yesNo}}</pre>
+      <checkbox v-model="yesNo" />
+      <hr>        
+
+      <pre>{{group}}</pre>
+      <group v-model="group" />
+      <hr>        
+
+      <pre>{{radio}}</pre>
+      <radio v-model="radio" />
+      <hr>        
+    </div>
+  </script>
+
+  <script type="text/x-template" id="input-comp">
+    <div class="wrapper">
+      <input type="text" :value="value" @input="$emit('input', $event.target.value)">
+    </div>
+  </script>
+
+  <script type="text/x-template" id="checkbox">
+    <div class="wrapper">
+      <input type="checkbox" :checked="value" @change="$emit('change', $event.target.checked)">
+    </div>
+  </script>
+
+  <script type="text/x-template" id="group">
+    <div class="wrapper">
+      <div>
+        <label>
+          <span>red</span>
+          <input value="red" @change="expose" v-model="inner" type="checkbox">
+        </label>
+      </div>
+      <div>
+        <label>
+          <span>green</span>
+          <input value="green" @change="expose" v-model="inner" type="checkbox">
+        </label>
+      </div>
+      <div>
+        <label>
+          <span>blue</span>
+          <input value="blue" @change="expose" v-model="inner" type="checkbox">
+        </label>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-template" id="radio">
+    <div class="wrapper">
+      <div>
+        <label>
+          <span>visa</span>
+          <input :checked="value === 'visa'" value="visa" @change="handleChange" name="payment" type="radio">
+        </label>
+      </div>
+      <div>
+        <label>
+          <span>master card</span>
+          <input :checked="value === 'master'" value="master" @change="handleChange" name="payment" type="radio">
+        </label>
+      </div>
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"
+    integrity="sha512-BKbSR+cfyxLdMAsE0naLReFSLg8/pjbgfxHh/k/kUC82Hy7r6HtR5hLhobaln2gcTvzkyyehrdREdjpsQwy2Jw=="
+    crossorigin="anonymous"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
