@@ -13,33 +13,48 @@
 
   <script type="text/x-template" id="root-template">
     <div class="wrapper">
+      <!-- <pre>{{test}}</pre> -->
+      <!-- <input type="text"  v-model="test"> -->
+      <!-- <input type="text" 
+        :value="test" 
+        @input="test = $event.target.value"
+      >
+      <hr> -->
+
       <pre>{{myText}}</pre>
-      <input-comp />
+
+      <input-comp v-model="myText" />
       <hr>
 
       <pre>{{yesNo}}</pre>
-      <checkbox />
+      <checkbox v-model="yesNo" />
       <hr>        
 
       <pre>{{group}}</pre>
-      <group />
+      <group v-model="group"/>
       <hr>        
 
       <pre>{{radio}}</pre>
-      <radio />
+      <radio v-model="radio" />
       <hr>        
     </div>
   </script>
 
   <script type="text/x-template" id="input-comp">
     <div class="wrapper">
-      <input type="text" />
+      <input type="text" 
+        :value="value" 
+        @input="$emit('nonInput', $event.target.value)"
+      />
     </div>
   </script>
 
   <script type="text/x-template" id="checkbox">
     <div class="wrapper">
-      <input type="checkbox" />
+      <input type="checkbox" 
+        :checked="value"
+        @change="$emit('change', $event.target.checked)"
+      />
     </div>
   </script>
 
@@ -48,19 +63,19 @@
       <div>
         <label>
           <span>red</span>
-          <input value="red" type="checkbox">
+          <input value="red" v-model="inner" @change="handleChange" type="checkbox">
         </label>
       </div>
       <div>
         <label>
           <span>green</span>
-          <input value="green" type="checkbox">
+          <input value="green" v-model="inner" @change="handleChange" type="checkbox">
         </label>
       </div>
       <div>
         <label>
           <span>blue</span>
-          <input value="blue" type="checkbox">
+          <input value="blue" v-model="inner" @change="handleChange" type="checkbox">
         </label>
       </div>
     </div>
@@ -68,16 +83,16 @@
 
   <script type="text/x-template" id="radio">
     <div class="wrapper">
-      <div>
+      <div v-for="control in controls">
         <label>
-          <span>visa</span>
-          <input value="visa" name="payment" type="radio">
-        </label>
-      </div>
-      <div>
-        <label>
-          <span>master card</span>
-          <input value="master" name="payment" type="radio">
+          <span>{{control}}</span>
+          <input 
+            :checked="value === control"
+            :value="control" 
+            name="payment" 
+            @change="handleChange" 
+            type="radio"
+          >
         </label>
       </div>
     </div>
